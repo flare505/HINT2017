@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.jit.checkmate.MainActivity">
+    <item
+        android:id="@+id/log_out"
+        android:orderInCategory="1"
+        android:title="log out"
+        app:showAsAction="never" />
+</menu>
