@@ -7,10 +7,10 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="280dp"
-        android:layout_height="150dp">
+        android:layout_height="120dp">
         <TextView
             android:id="@+id/tv1"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:textSize="25dp"
             android:textStyle="bold"
             android:layout_width="match_parent"
@@ -23,11 +23,23 @@
             android:id="@+id/details"/>
 
     </LinearLayout>
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@drawable/call"
-        android:padding = "10dp"
-        android:id="@+id/calling_img"/>
+        android:orientation="vertical"
+        android:layout_height="120dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:src="@drawable/call"
+            android:padding = "10dp"
+            android:id="@+id/calling_img"/>
+        <TextView
+            android:id="@+id/msg_now"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="message now"
+            android:gravity="center"
+            android:textSize="15dp"/>
+    </LinearLayout>
 
 </LinearLayout>

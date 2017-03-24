@@ -65,6 +65,7 @@ public class FindLocationActivity extends AppCompatActivity implements LocationL
 
         longitude.setText("Current Longitude:" + location.getLongitude());
         latitude.setText("Current Latitude:" + location.getLatitude());
+        Log.d("hello", " onlocationchanged");
     }
 
     @Override

@@ -32,7 +32,12 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_map_api_key" />
         <activity android:name=".MapActivity" />
-        <activity android:name=".FindLocationActivity"></activity>
+        <activity android:name=".FindLocationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

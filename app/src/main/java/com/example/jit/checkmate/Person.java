@@ -1,5 +1,7 @@
 package com.example.jit.checkmate;
 
+import java.util.Date;
+
 /**
  * Created by jit on 24-03-2017.
  */
@@ -10,16 +12,18 @@ public class Person {
     double lat,lng;
     String desc;
     double distance;
+    Date date;
 
     Person(){
 
     }
 
-    Person(String name, double lat, double lng, String desc){
+    Person(String name, double lat, double lng, String desc,Date date){
         this.name=name;
         this.lat = lat;
         this.lng=lng;
         this.desc=desc;
+        this.date = date;
     }
 
     public void setName(String n){
@@ -40,6 +44,9 @@ public class Person {
     public void setContactno(String c){
         this.contactno = c;
     }
+    public void setDate(Date d){
+        this.date=d;
+    }
 
     public String getName(){
         return name;
@@ -56,6 +63,9 @@ public class Person {
     public double getDistance(){return distance;}
     public String getContactno(){
         return contactno;
+    }
+    public Date getDate(){
+        return date;
     }
 
 }

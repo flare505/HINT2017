@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     String destination;
     public static TextView dest, dest1;
     public static Button select_dest, select_rest;
-    double lat = 0, lng = 0;
+    public static double lat = 0, lng = 0;
     LocationManager locationManager;
     public static Location location;
     String mprovider;
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
             if (location != null)
                 onLocationChanged(location);
             else
-                Toast.makeText(getBaseContext(), "No Location Provider Found Check Your Code", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "No Location Provider Found Check Your Code", Toast.LENGTH_SHORT).show();
         }
 
         // Create the adapter that will return a fragment for each of the three
@@ -172,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 //        Log.d("hello", String.valueOf(location.getLatitude()));
         lat = location.getLatitude();
         lng = location.getLongitude();
+        Log.d("hello", " lat is : " + String.valueOf(lat));
     }
 
     //location fetcher
@@ -223,16 +224,28 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 find_mate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        Log.d("hello", " find mates for travel ");
                         String dst = dest.getText().toString();
+                        Log.d("hello", dst +  " is your destination ");
                         if(dst.length()==0){
                             Toast.makeText(getContext(),"Select you destination !",Toast.LENGTH_SHORT).show();
                             return;
                         }
+//                        Log.d("hello", "Lat : " +  String.valueOf(location.getLatitude()) + " and longitude : " + String.valueOf(location.getLongitude()));
+
                         Intent in = new Intent(getContext(),FindMates.class);
                         in.putExtra("entry",dst);
                         in.putExtra("type","travel");
                         in.putExtra("location",location);
-                        startActivity(in);
+                        Log.d("hello", String.valueOf(lat) + " and long : " + String.valueOf(lng));
+//                        Log.d("hello", "Lat : " +  String.valueOf(location.getLatitude()) + " and longitude : " + String.valueOf(location.getLongitude()));
+                        if(location==null) {
+//
+                            Toast.makeText(getContext() , "Please wait a bit", Toast.LENGTH_LONG).show();
+//startActivity(in);
+                        }else{
+                            startActivity(in);
+                        }
                     }
                 });
 
@@ -352,7 +365,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 //Write your code if there's no result
             }
         }
-
         if(requestCode == 2){
 //            Log.d("hello", " mil gya restaurant hahaha a, ");
 //            Log.d("hello", destination + " is our destination  2");
@@ -367,5 +379,4 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
             }
         }
     }//onActivityResult
-
 }

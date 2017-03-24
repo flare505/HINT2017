@@ -15,18 +15,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by jit on 24-03-2017.
  */
 
-public class CustonAdapter extends BaseAdapter {
+public class CustomAdapter extends BaseAdapter {
 
     ArrayList<Person> Alist;
     Context act;
     private static LayoutInflater inf;
 
-    public CustonAdapter(Context act, ArrayList<Person> alist) {
+    public CustomAdapter(Context act, ArrayList<Person> alist) {
         this.act = act;
         this.Alist = new ArrayList<Person>(alist);
         inf = LayoutInflater.from(act);
@@ -58,9 +59,12 @@ public class CustonAdapter extends BaseAdapter {
         ImageView calling_image = (ImageView)vi.findViewById(R.id.calling_img);
 
         final Person person = Alist.get(position);
+        int h1 = person.getDate().getHours();
+        int h2 = new Date().getHours();
+        int abs = (h1-h2+24)%24;
 
         tv1.setText(person.getName().toString());
-        details.setText(" distance : "+person.getDistance()+" km away\n contact no : "+person.getContactno()+"\n desc : "+person.getDesc());
+        details.setText(" distance : "+person.getDistance()+" km away"+"\n desc : "+person.getDesc()+"\n availability : "+abs+" hours");
 
         calling_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +82,22 @@ public class CustonAdapter extends BaseAdapter {
                 }
                 Toast.makeText(view.getContext(),"calling ...",Toast.LENGTH_LONG).show();
                 view.getContext().startActivity(callIntent);
+            }
+        });
+
+        TextView msg_now = (TextView)vi.findViewById(R.id.msg_now);
+        msg_now.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(person.getContactno()==null){
+                    Toast.makeText(view.getContext(),"Contact number is not available !",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Uri uri = Uri.parse("smsto:" + person.getContactno());
+                Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+                i.setPackage("com.whatsapp");
+                act.startActivity(i);
             }
         });
         return vi;
