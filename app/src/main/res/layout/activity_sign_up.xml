@@ -66,8 +66,8 @@
         android:text="Register"
         android:background="@color/colorPrimary"
         android:textColor="#ffffff"
-        android:layout_marginTop="48dp"
-        android:layout_below="@+id/name_field"
+        android:layout_marginBottom="27dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -81,6 +81,20 @@
         android:layout_marginTop="46dp"
         android:layout_alignLeft="@+id/passwordtext"
         android:layout_alignStart="@+id/passwordtext"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:id="@+id/contactno_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Conact no"
+        android:layout_below="@+id/name_field"
+        android:layout_marginTop="39dp"
+        android:layout_alignLeft="@+id/name_field"
+        android:layout_alignStart="@+id/name_field"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

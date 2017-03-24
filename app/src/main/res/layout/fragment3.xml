@@ -4,7 +4,23 @@
     android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello"/>
-
+        android:layout_height="50dp"
+        android:id="@+id/dest1"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textStyle="italic"
+        android:textSize="20dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/select_rest"
+        android:text="Select Restaurant"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"></LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Find Mates"
+        android:id="@+id/find_mate"/>
 </LinearLayout>

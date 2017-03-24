@@ -15,4 +15,12 @@
         android:layout_height="50dp"
         android:id="@+id/select_dest"
         android:text="Select destination"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"></LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/find_mate"
+        android:text="Find Mate"/>
 </LinearLayout>

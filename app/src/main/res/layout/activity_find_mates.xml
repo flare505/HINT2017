@@ -9,16 +9,37 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Intersted users"/>
+        android:textSize="20dp"
+        android:gravity="center_vertical"
+        android:text="Persons with same interest :"/>
     <ListView
         android:id="@+id/mate_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="370dp"></ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"></LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="interested"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:text="I am also interested"
+        android:textColor="#ffffff"
+        android:background="@color/colorPrimary"
+        android:layout_gravity="center_horizontal"
         android:onClick="Register"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"></LinearLayout>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@color/colorPrimary"
+        android:text="I am Done"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:onClick="IamDone"/>
+
 
 </LinearLayout>
