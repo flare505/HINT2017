@@ -27,7 +27,7 @@ public class MapActivity extends FragmentActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                Log.i("TAG", "Place: " + place.getName());
+                Log.i("hello", "Place: " + place.getName());
                 dest = place.getName().toString();
             }
 
@@ -42,6 +42,16 @@ public class MapActivity extends FragmentActivity {
     public  void BacktoMain(View view){
         Intent returnIntent = new Intent();
         returnIntent.putExtra("result",dest);
+        Log.d("hello", dest + " is my destination ");
+        setResult(Activity.RESULT_OK,returnIntent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("result","");
+        Log.d("hello", dest + " is my destination ");
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
     }

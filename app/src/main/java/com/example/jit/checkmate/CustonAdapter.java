@@ -22,13 +22,13 @@ import java.util.ArrayList;
 
 public class CustonAdapter extends BaseAdapter {
 
-    ArrayList<String> Alist;
+    ArrayList<Person> Alist;
     Context act;
     private static LayoutInflater inf;
 
-    public CustonAdapter(Context act, ArrayList<String> alist) {
+    public CustonAdapter(Context act, ArrayList<Person> alist) {
         this.act = act;
-        this.Alist = new ArrayList<String>(alist);
+        this.Alist = new ArrayList<Person>(alist);
         inf = LayoutInflater.from(act);
     }
 
@@ -38,7 +38,7 @@ public class CustonAdapter extends BaseAdapter {
     }
 
     @Override
-    public String getItem(int i) {
+    public Person getItem(int i) {
         return Alist.get(i);
     }
 
@@ -54,11 +54,32 @@ public class CustonAdapter extends BaseAdapter {
             vi = inf.inflate(R.layout.custom_list, null);
 
         TextView tv1 = (TextView) vi.findViewById(R.id.tv1);
+        TextView details = (TextView)vi.findViewById(R.id.details);
+        ImageView calling_image = (ImageView)vi.findViewById(R.id.calling_img);
 
-        final String entity = Alist.get(position);
+        final Person person = Alist.get(position);
 
-        tv1.setText(entity);
+        tv1.setText(person.getName().toString());
+        details.setText(" distance : "+person.getDistance()+" km away\n contact no : "+person.getContactno()+"\n desc : "+person.getDesc());
 
+        calling_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String num = person.getContactno();
+                if(num==null){
+                    Toast.makeText(view.getContext(),"Contact number is not available !",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + num));
+                if (ActivityCompat.checkSelfPermission(view.getContext(), android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions((Activity) view.getContext(),new String[]{android.Manifest.permission.CALL_PHONE},1);
+                    return;
+                }
+                Toast.makeText(view.getContext(),"calling ...",Toast.LENGTH_LONG).show();
+                view.getContext().startActivity(callIntent);
+            }
+        });
         return vi;
     }
 }

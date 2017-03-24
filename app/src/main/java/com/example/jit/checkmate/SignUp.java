@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
-    EditText email_field,pass_field,name_field;
+    EditText email_field,pass_field,name_field,contactno_field;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mRootref;
@@ -33,6 +33,7 @@ public class SignUp extends AppCompatActivity {
         email_field = (EditText)findViewById(R.id.email_text);
         pass_field = (EditText)findViewById(R.id.passwordtext);
         name_field = (EditText)findViewById(R.id.name_field);
+        contactno_field = (EditText)findViewById(R.id.contactno_field);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -54,8 +55,9 @@ public class SignUp extends AppCompatActivity {
 
     public void signup(View v){
 
-        String email=email_field.getText().toString();
+        final String email=email_field.getText().toString();
         String password=pass_field.getText().toString();
+        final String conactno = contactno_field.getText().toString();
         if(email.length()==0){email_field.setError("required !"); return;}
         if(password.length()<6){pass_field.setError("password must be of atleast length 6"); return;}
 
@@ -77,6 +79,10 @@ public class SignUp extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
+                                        String[] tokens = email.split("@");
+                                        String id = tokens[0];
+                                        DatabaseReference cref = FirebaseDatabase.getInstance().getReference().child("user");
+                                        cref.child(id).setValue(conactno);
                                         Intent i = new Intent(SignUp.this,MainActivity.class);
                                         startActivity(i);
                                     }
