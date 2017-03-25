@@ -128,15 +128,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
     }
 
 
@@ -210,8 +201,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
             final int d = getArguments().getInt(ARG_SECTION_NUMBER);
             if (d == 1) {
                 rootView = inflater.inflate(R.layout.fragment1, container, false);
-                rootView.setBackground(getResources().getDrawable(R.drawable.roadtrip));
-                dest = (TextView)rootView.findViewById(R.id.dest);
+                //rootView.setBackground(getResources().getDrawable(R.drawable.roadtrip));
+                //dest = (TextView)rootView.findViewById(R.id.dest);
                 select_dest = (Button)rootView.findViewById(R.id.select_dest);
                 select_dest.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -224,9 +215,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 find_mate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Log.d("hello", " find mates for travel ");
-                        String dst = dest.getText().toString();
-                        Log.d("hello", dst +  " is your destination ");
+                        String dst = select_dest.getText().toString();
                         if(dst.length()==0){
                             Toast.makeText(getContext(),"Select you destination !",Toast.LENGTH_SHORT).show();
                             return;
@@ -251,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
             } else if (d == 2) {
                 rootView = inflater.inflate(R.layout.fragment2, container, false);
-                rootView.setBackground(getResources().getDrawable(R.drawable.sports));
+                //rootView.setBackground(getResources().getDrawable(R.drawable.sports));
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                         android.R.layout.select_dialog_item, SPORTS);
                 final AutoCompleteTextView textView = (AutoCompleteTextView)
@@ -277,9 +266,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 textView.setTextColor(Color.RED);
             } else {
                 rootView = inflater.inflate(R.layout.fragment3, container, false);
-                rootView.setBackground(getResources().getDrawable(R.drawable.food));
+                //rootView.setBackground(getResources().getDrawable(R.drawable.food));
                 select_rest = (Button)rootView.findViewById(R.id.select_rest);
-                dest1 = (TextView)rootView.findViewById(R.id.dest1);
+                //dest1 = (TextView)rootView.findViewById(R.id.dest1);
                 select_rest.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -291,7 +280,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 find_mate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String dst = dest1.getText().toString();
+                        String dst = select_rest.getText().toString();
                         if(dst.length()==0){
                             Toast.makeText(getContext(),"Select your restaurant !",Toast.LENGTH_SHORT).show();
                             return;
@@ -357,7 +346,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 //            destination = data.getStringExtra("result");
 //            Log.d("hello", destination + " is our destination 1");
             if(resultCode == Activity.RESULT_OK){
-                dest.setText(destination);
+                select_dest.setText(destination);
 //                Log.d("hello", " result 1 received ");
             }
             if (resultCode == Activity.RESULT_CANCELED) {
@@ -370,7 +359,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 //            Log.d("hello", destination + " is our destination  2");
 //            destination = data.getStringExtra("result");
             if(resultCode == Activity.RESULT_OK){
-                dest1.setText(destination);
+                select_rest.setText(destination);
                 Log.d("hello", " another destination " + destination);
 //                Log.d("hello", " result 2 received ");
             }
