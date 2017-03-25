@@ -210,8 +210,22 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 select_dest.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent in = new Intent(getContext(),MapActivity.class);
-                        getActivity().startActivityForResult(in, 1);
+                        Log.d("hello", " now going to find restaurant hahah !!!");
+                        int PLACE_PICKER_REQUEST = 1;
+//                        getActivity().startActivityForResult(in, 2);
+                        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+                        if(location==null){
+                            Toast.makeText(rootView.getContext() , " Please wait a bit ..." , Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            try {
+                                getActivity().startActivityForResult(builder.build((Activity) rootView.getContext()), PLACE_PICKER_REQUEST);
+                            } catch (GooglePlayServicesRepairableException e) {
+                                e.printStackTrace();
+                            } catch (GooglePlayServicesNotAvailableException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 });
                 Button find_mate = (Button)rootView.findViewById(R.id.find_mate);
@@ -279,12 +293,17 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                         int PLACE_PICKER_REQUEST = 2;
 //                        getActivity().startActivityForResult(in, 2);
                         PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-                        try {
-                            getActivity().startActivityForResult(builder.build((Activity) rootView.getContext()), PLACE_PICKER_REQUEST);
-                        } catch (GooglePlayServicesRepairableException e) {
-                            e.printStackTrace();
-                        } catch (GooglePlayServicesNotAvailableException e) {
-                            e.printStackTrace();
+                        if(location==null){
+                            Toast.makeText(rootView.getContext() , " Please wait a bit ..." , Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            try {
+                                getActivity().startActivityForResult(builder.build((Activity) rootView.getContext()), PLACE_PICKER_REQUEST);
+                            } catch (GooglePlayServicesRepairableException e) {
+                                e.printStackTrace();
+                            } catch (GooglePlayServicesNotAvailableException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 });
