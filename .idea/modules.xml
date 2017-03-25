@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CheckMate.iml" filepath="$PROJECT_DIR$/CheckMate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HINT2017.iml" filepath="$PROJECT_DIR$/HINT2017.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
