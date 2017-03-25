@@ -1,26 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+    android:layout_height="match_parent"
+    android:background="@mipmap/back2">
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:src="@mipmap/travel"
+        android:layout_marginBottom="60dp"/>
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/dest"
         android:gravity="center"
         android:textColor="#ffffff"
         android:textStyle="italic"
-        android:textSize="20dp"/>
+        android:textSize="20dp"/>-->
     <Button
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:id="@+id/select_dest"
-        android:text="Select destination"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="5dp"></LinearLayout>
+        android:background="@drawable/edit_button"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Select Destination..."
+        android:layout_marginTop="10dp"
+        android:textAlignment="viewStart"
+        android:paddingLeft="10dp"/>
     <Button
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:id="@+id/find_mate"
-        android:text="Find Mate"/>
+        android:text="Discover"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/rounded_button"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>
