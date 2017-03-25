@@ -11,3 +11,23 @@ The user has to be logged in to use the app. The registration functionality is p
 A user who is interested in some activity, say for instance travel, would select the time duration for which he is available to be contacted and partenered with. During this time, the user can log in anytime to see the peers in his geographical location who are interested in the same thing.
 
 A instant-whatsapp chat functionality is provided for the users interested in the same thing to discuss and decide on an appropriate time and/or place.
+
+# Functionalities and Screenshots:
+
+What is the thing you'd like to share?
+
+Travel:
+
+Sports:
+
+or Food:
+
+Your location is detected using GPS and you can choose your destination using Google maps:
+
+Add a short description and enter for how long you're available:
+
+# Tools used:
+
+Firebase
+
+Google Maps API
