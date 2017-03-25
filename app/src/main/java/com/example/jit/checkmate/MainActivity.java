@@ -45,11 +45,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.identity.intents.Address;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -197,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView;
+            final View rootView;
             final int d = getArguments().getInt(ARG_SECTION_NUMBER);
             if (d == 1) {
                 rootView = inflater.inflate(R.layout.fragment1, container, false);
@@ -272,8 +275,17 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 select_rest.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent in = new Intent(getContext(),MapActivity.class);
-                        getActivity().startActivityForResult(in, 2);
+                        Log.d("hello", " now going to find restaurant hahah !!!");
+                        int PLACE_PICKER_REQUEST = 2;
+//                        getActivity().startActivityForResult(in, 2);
+                        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+                        try {
+                            getActivity().startActivityForResult(builder.build((Activity) rootView.getContext()), PLACE_PICKER_REQUEST);
+                        } catch (GooglePlayServicesRepairableException e) {
+                            e.printStackTrace();
+                        } catch (GooglePlayServicesNotAvailableException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
                 Button find_mate = (Button)rootView.findViewById(R.id.find_mate);
@@ -340,13 +352,16 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("hello", String.valueOf(requestCode) + " result is here ");
-        destination = data.getStringExtra("result");
+//        destination = data.getStringExtra("result");
 //        Log.d("hello", destination + " is my destination");
+        Place place1 = PlacePicker.getPlace(data, this);
+//        Log.d("hello", " the place is : " + place1.getAddress());
         if (requestCode == 1) {
 //            destination = data.getStringExtra("result");
 //            Log.d("hello", destination + " is our destination 1");
             if(resultCode == Activity.RESULT_OK){
-                select_dest.setText(destination);
+                Place place = PlacePicker.getPlace(data, this);
+                select_dest.setText(place.getName());
 //                Log.d("hello", " result 1 received ");
             }
             if (resultCode == Activity.RESULT_CANCELED) {
@@ -355,12 +370,15 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
             }
         }
         if(requestCode == 2){
-//            Log.d("hello", " mil gya restaurant hahaha a, ");
+            Log.d("hello", " mil gya restaurant hahaha a, ");
 //            Log.d("hello", destination + " is our destination  2");
 //            destination = data.getStringExtra("result");
             if(resultCode == Activity.RESULT_OK){
+                String address = (String) place1.getAddress();
+                String str[] = address.split(",");
+                destination = str[0] + ", " + str[1] + ", " + str[2];
                 select_rest.setText(destination);
-                Log.d("hello", " another destination " + destination);
+//                Log.d("hello", " another destination " + destination);
 //                Log.d("hello", " result 2 received ");
             }
             if(resultCode == Activity.RESULT_CANCELED){

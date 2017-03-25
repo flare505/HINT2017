@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -64,7 +65,7 @@ public class CustomAdapter extends BaseAdapter {
         int abs = (h1-h2+24)%24;
 
         tv1.setText(person.getName().toString());
-        details.setText(" distance : "+person.getDistance()+" km away"+"\n desc : "+person.getDesc()+"\n availability : "+abs+" hours");
+        details.setText(person.getDesc() + "\n" + new DecimalFormat("#0.000").format(person.getDistance())+" km away\n" +abs+" hours Left");
 
         calling_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +86,7 @@ public class CustomAdapter extends BaseAdapter {
             }
         });
 
-        TextView msg_now = (TextView)vi.findViewById(R.id.msg_now);
+        ImageView msg_now = (ImageView) vi.findViewById(R.id.msg_now);
         msg_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -53,9 +53,7 @@ public class FindMates extends AppCompatActivity {
             id = tokens[0];
         }
         today = new Date();
-        if(mylocation!=null)
-        Toast.makeText(FindMates.this,"location : "+mylocation.getLatitude()+" "+mylocation.getLongitude(),Toast.LENGTH_LONG).show();
-
+        Toast.makeText(FindMates.this, "...Loading...", Toast.LENGTH_LONG).show();
         final ListView mate_list = (ListView)findViewById(R.id.mate_list);
         mRootRef = FirebaseDatabase.getInstance().getReference().child(type).child(entry);
 

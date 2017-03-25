@@ -4,27 +4,24 @@
     android:gravity="center"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textSize="20dp"
-        android:gravity="center_vertical"
-        android:text="What's on your mind ? :"/>
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:id="@+id/desc_edit"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textSize="20dp"
-        android:gravity="center_vertical"
-        android:text="Enter extra hour :"/>
+        android:id="@+id/desc_edit"
+        android:hint="Add Description"
+        android:paddingLeft="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/hour_edit" />
+        android:id="@+id/hour_edit"
+        android:hint="Waiting time (in hours)"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
 
 

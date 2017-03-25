@@ -1,5 +1,6 @@
 package com.example.jit.checkmate;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 /**
@@ -39,7 +40,7 @@ public class Person {
         this.desc=s;
     }
     public void setDistance(double d){
-        this.distance=d/1000;
+        this.distance=(d/1000);
     }
     public void setContactno(String c){
         this.contactno = c;
