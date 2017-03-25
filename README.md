@@ -18,13 +18,23 @@ What is the thing you'd like to share?
 
 Travel:
 
+![Alt text](Screenshots/Screenshot_20170325-094133.png?raw=true)
+
 Sports:
+
+![Alt text](Screenshots/Screenshot_20170325-094138.png?raw=true)
 
 or Food:
 
+![Alt text](Screenshots/Screenshot_20170325-094142.png?raw=true)
+
 Your location is detected using GPS and you can choose your destination using Google maps:
 
+![Alt text](Screenshots/Screenshot_20170325-094156.png?raw=true)
+
 Add a short description and enter for how long you're available:
+
+![Alt text](Screenshots/Screenshot_20170325-100308.png?raw=true)
 
 # Tools used:
 
